@@ -1,4 +1,4 @@
-package org.example.reader;
+package org.example.maze;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -1,10 +1,9 @@
-package org.example.reader;
+package org.example.maze;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import org.example.models.Coordinate;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public abstract class AbstractMaze {
     private static final int ROAD = 0;
@@ -106,16 +105,16 @@ public abstract class AbstractMaze {
     }
 
     public void printPathDirection(List<Coordinate> path) {
-        StringBuilder pathToPrint = new StringBuilder();
+        StringBuilder pathToPrint = new StringBuilder("Path to 'X': ");
         Coordinate prev = start;
         for (Coordinate coordinate : path.reversed()) {
-            if (prev.x > coordinate.getX()) {
+            if (prev.getX() > coordinate.getX()) {
                 pathToPrint.append("u,");
-            } else if (prev.x < coordinate.getX()) {
+            } else if (prev.getX() < coordinate.getX()) {
                 pathToPrint.append("d,");
-            } else if (prev.y > coordinate.getY()) {
+            } else if (prev.getY() > coordinate.getY()) {
                 pathToPrint.append("l,");
-            } else if (prev.y < coordinate.getY()) {
+            } else if (prev.getY() < coordinate.getY()) {
                 pathToPrint.append("r,");
             }
             prev = coordinate;

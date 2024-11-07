@@ -1,6 +1,7 @@
 package org.example;
 
-import org.example.reader.*;
+import org.example.models.Coordinate;
+import org.example.maze.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,14 +24,23 @@ public class Main {
             }
         } else {
             System.out.println("Please draw your maze");
-            maze = new ConsoleMaze();
+            String fileText = "";
+            try (Scanner input = new Scanner(System.in)) {
+                while (input.hasNextLine()) {
+                    fileText += input.nextLine() + "\n";
+                }
+            }
+            maze = new ConsoleMaze(fileText);
         }
         if (maze != null) {
             BFSMazeSolver bfs = new BFSMazeSolver();
             List<Coordinate> path = bfs.solve(maze);
             maze.printPath(path);
-            maze.printPathDirection(path);
-            System.out.printf("Path: %s\n", path);
+            if (path.isEmpty()) {
+                System.out.println("There is no path to 'X'");
+            } else {
+                maze.printPathDirection(path);
+            }
             maze.reset();
         }
     }

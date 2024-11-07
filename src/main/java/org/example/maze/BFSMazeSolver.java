@@ -1,4 +1,6 @@
-package org.example.reader;
+package org.example.maze;
+
+import org.example.models.Coordinate;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,7 +46,7 @@ public class BFSMazeSolver {
 
         while (iter != null) {
             path.add(iter);
-            iter = iter.parent;
+            iter = iter.getParent();
         }
 
         return path;

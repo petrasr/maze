@@ -1,9 +1,9 @@
-package org.example.reader;
+package org.example.models;
 
 public class Coordinate {
-    int x;
-    int y;
-    Coordinate parent;
+    private final int x;
+    private final int y;
+    private final Coordinate parent;
 
     public Coordinate(int x, int y) {
         this.x = x;
@@ -17,15 +17,15 @@ public class Coordinate {
         this.parent = parent;
     }
 
-    int getX() {
+    public int getX() {
         return x;
     }
 
-    int getY() {
+    public int getY() {
         return y;
     }
 
-    Coordinate getParent() {
+    public Coordinate getParent() {
         return parent;
     }
 
